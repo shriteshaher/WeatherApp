@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 ;
+import { NgxSpinnerModule } from "ngx-spinner";  
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule, FormsModule
+    AppRoutingModule,HttpClientModule, FormsModule,
+    NgxSpinnerModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

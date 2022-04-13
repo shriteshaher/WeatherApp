@@ -1,5 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid " >
   <div class="row">
+    
     <!--First Container-->
     <div class="col-md-3 " style="background-color:
     #1E213A;" [ngClass]="{'display-close':t1,'display-open':t2}">
@@ -12,8 +13,8 @@
         <input class="ms-1" type="button" style="height:50px;width:50px" value="Search" style="background-color:#3C47E9;border:none;color: white;" (click)="search1(search.value)" >
       </div>
     </div>
-    <div class="col-md-3 " style="background-color:
-    #1E213A;"  [ngClass]="{'display-close':t2,'display-open':t1}">
+    <div class="col-md-3 ct " style="background-color:
+    #1E213A;position: relatives;"  [ngClass]="{'display-close':t2,'display-open':t1}">
 
       <div class="d-flex m-1 justify-content-between py-2">
         <button class="search-btn" (click)="close(false,true)" >
@@ -22,27 +23,27 @@
         <img src="../assets/Images/round-gps_fixed-24px.svg" alt="" style="position:relative;top:4px;background: #6E707A;height:20px;width:20px;" class="rounded-circle " >
       </div>
 
-      <img src="../assets/Images/HeavyCloud.png" alt="" class="img-fluid "  width="150px" height="20px"  style="position:relative;left: -30%;"  >
+      <img src="../assets/Images/HeavyCloud.png" alt="" class="img-fluid img-hide"  width="150px" height="20px"  style="position:relative;left: -30%;"  >
 
-      <img src="../assets/Images/Clear.png" class="img-fluid "  width="150px" height="20px"
+      <img src="../assets/Images/Clear.png" class="img-fluid img-hide"  width="150px" height="20px"
       style="position:relative;left: -20%;top:6%">
 
       <img src="../assets/Images/HeavyRain.png"
-      class="img-fluid "  width="150px" height="20px"
+      class="img-fluid img-hide"  width="150px" height="20px"
       style="position:relative;left:30%;top:-6%;">
 
-      <img src="../assets/Images/HeavyCloud.png" class="img-fluid "  width="150px" height="20px"
+      <img src="../assets/Images/HeavyCloud.png" class="img-fluid img-hide"  width="150px" height="20px"
       style="position:relative;right: -30%;top:-150px">
 
-      <img src="../assets/Images/HeavyCloud.png" class="img-fluid "  width="150px" height="20px"
+      <img src="../assets/Images/HeavyCloud.png" class="img-fluid img-hide"  width="150px" height="20px"
       style="position:relative;left: -30%;top:-150px">
 
-      <img src="../assets/Images/HeavyCloud.png" class="img-fluid "  width="150px" height="20px"
+      <img src="../assets/Images/HeavyCloud.png" class="img-fluid img-hide"  width="150px" height="20px"
       style="position:relative;right: -30%;top:-150px;">
   
       <div  class="text-center p-2 " style="color:white;font-size: 
       70px;font-weight: 600;margin-top:-100px; ">
-        {{ weather["main"]["temp"] }} <span style="font-size: 25px;color: #A09FB1;"> °C</span>
+        {{array_C[0]}} <span style="font-size: 25px;color: #A09FB1;"> °C</span>
       </div>
       
 
@@ -52,115 +53,76 @@
     
       <div class="d-flex justify-content-center m-1 p-2" style="color: white;">
         <div style="color: #A09FB1; ">Today</div>
-      <div class="ms-3" style="color: #A09FB1; ;">Fri 5 June</div>
+      <div class="ms-3" style="color: #A09FB1; ;">{{today1}}</div>
       </div>
 
       <div class="text-center d-flex justify-content-center m-2 p-2">
-        <img src="../assets/Images/location-sign-svgrepo-com.svg" alt="" height="20px" width="15px">
-        <div style="color:#A09FB1;">{{weather["name"]}}</div>
+        <img src="../assets/Images/location-sign-svgrepo-com.svg" alt=""  class="mx-1" height="20px" width="15px">
+        <div style="color:#A09FB1;">{{weatherC["city"]["name"]}}</div>
       </div>
     </div>
+    
   
 
-  <div class="col-md-9 d-flex flex-column  align-items-center justify-content-center " style="background-color: #100E1D">
+  <div class="col-md-9 ct2 d-flex flex-column  align-items-center justify-content-center " style="background-color: #100E1D" >
       <div class="d-flex justify-content-end p-2 col-md-10" >
         <div class="rounded-circle px-2  m-1" style="background-color: white;">°F</div>
         <div class="rounded-circle px-2 m-1" style="background-color:#1E213A;color:white;">°C</div>
       </div>
-      <div class="d-flex flex-wrap justify-content-center">
-        <div class="card p-2 d-flex justify-content-center m-2"   style="width: 10rem;background-color: #1E213A;">
-             <div class="card-title text-center" style="color:white">
-              Tomorrow
-            </div>
-            <img src="../assets/Images/Clear.png" alt="" srcset="" height="100px" width="120px" >
 
-            <img src="../assets/Images/Sleet.png" alt="" srcset="" height="200px" style="position: relative;top:-100px;left: 2px;">
-          
-            <div class="d-flex  flex justify-content-center align-items-center" style="margin-top: -80px;">
-              <div  class=" m-1" style="color:white ">{{weather["main"]["temp_min"]}} °C</div>
-              <div style="color:white" class="ms-1"> {{weather["main"]["temp_max"]}} °F </div>
+      <div class="d-flex    flex-wrap justify-content-center m-2 align-items-center">
+       <ng-container *ngFor="let i of array_C; let index1=index">
+          <div *ngIf="index1==1" class="card  p-1 d-flex  flex-column justify-content-center m-2"   style="width: 10rem;height:20rem;background-color: #1E213A;">
+             <div class="card-title text-center" style="color:white;">
+              Tomorrow
+              </div>
+             <img src="{{weartherImages[array_img[index1]]}}" alt="" class="img-fluid"
+             srcset="" height="400px" width="120px" >
+            <div class="d-flex   justify-content-center align-items-center mt-2 ">
+              <div  class=" m-1" style="color:white ">{{array_C[index1]}}°C</div>
+              <div style="color:white" class="ms-1"> {{array_F[index1]}}°F </div>
             </div>
           </div>
-        
-          <div class="card p-2 d-flex justify-content-center m-2"   style="width: 10rem;background-color: #1E213A;">
-            <div class="card-title text-center" style="color:white">
-             Tomorrow
-           </div>
-           <img src="../assets/Images/Clear.png" alt="" srcset="" height="100px" width="120px">
-
-           <img src="../assets/Images/Sleet.png" alt="" srcset="" height="200px" style="position: relative;top:-100px;left: 2px;">
-           <div class="d-flex  justify-content-center " style="margin-top: -80px;">
-             <div  class=" m-1" style="color:white ">16°C</div>
-             <div style="color:white" class="m-1">32°F   </div>
-           </div>
-         </div>
-
-         <div class="card p-2 d-flex justify-content-center m-2"   style="width: 10rem;background-color: #1E213A;">
-          <div class="card-title text-center" style="color:white">
-           Tomorrow
-         </div>
-         <img src="../assets/Images/Clear.png" alt="" srcset="" height="100px" width="120px">
-
-         <img src="../assets/Images/Sleet.png" alt="" srcset="" height="200px" style="position: relative;top:-100px;left: 2px;">
-         <div class="d-flex  justify-content-center " style="margin-top: -80px;">
-           <div  class=" m-1" style="color:white ">16°C</div>
-           <div style="color:white" class="m-1">32°F   </div>
-         </div>
-       </div>
-        
-       <div class="card p-2 d-flex justify-content-center m-2"   style="width: 10rem;background-color: #1E213A;">
-        <div class="card-title text-center" style="color:white">
-         Tomorrow
-        </div>
-       <img src="../assets/Images/Clear.png" alt="" srcset="" height="100px" width="120px">
-
-       <img src="../assets/Images/Sleet.png" alt="" srcset="" height="200px" style="position: relative;top:-100px;left: 2px;">
-       <div class="d-flex  justify-content-center " style="margin-top: -80px;">
-         <div  class=" m-1" style="color:white ">16°C</div>
-         <div style="color:white" class="m-1">32°F   </div>
-       </div>
+          
+          <div *ngIf="index1>=2" class="card p-1 d-flex flex-column  justify-content-center m-2"   style="width: 10rem;height:20rem;background-color: #1E213A;">
+            <div class="card-title text-center" style="color:white">{{array_DateC[index1]}}</div>
+            <img src="{{weartherImages[array_img[index1]]}}" alt="" class="img-fluid"
+            srcset="" height="400px" width="120px" >
+             <div class="d-flex  justify-content-center mt-2" >
+              <div  class=" m-1" style="color:white ">{{array_C[index1]}}°C</div>
+              <div style="color:white" class="m-1">{{array_F[index1]}}°F   </div>
+             </div>
+          </div>x
+        </ng-container>
       </div>
-
-      <div class="card p-2 d-flex justify-content-center m-2"   style="width: 10rem;background-color: #1E213A;">
-        <div class="card-title text-center" style="color:white">
-         Tomorrow
-       </div>
-       <img src="../assets/Images/Clear.png" alt="" srcset="" height="100px" width="120px">
-
-       <img src="../assets/Images/Sleet.png" alt="" srcset="" height="200px" style="position: relative;top:-100px;left: 2px;">
-       <div class="d-flex  justify-content-center " style="margin-top: -80px;">
-         <div  class=" m-1" style="color:white ">16°C</div>
-         <div style="color:white" class="m-1">32°F   </div>
-       </div>
-     </div>
-   </div>
+   
    <div class="py-5 ms-1 col-md-10" style="color:white;font-size: 20px;">Today hightlights</div>
-   <div class="d-flex flex-wrap justify-content-center ">
+   <div class="d-flex flex-wrap justify-content-center col-md-10 ">
 
-     <div class="card rounded-0  text-center m-1 p-2" style="width:27rem;background-color: #1E213A;">
+     <div class="card rounded-0 d-flex  text-center m-1 p-2" style="width:27rem;background-color: #1E213A;">
       <div class="card-title wh">Wind Status</div>
-      <div class="wh" style="font-size: 5rem;">{{weather["wind"]["speed"]}} <span style="font-size:50px;">mph</span></div>
+      <div class="wh" style="font-size: 5rem;">{{weatherC["list"][0]["main"]["humidity"]}} <span style="font-size:50px;">mph</span></div>
       <div class="wh">Wsw</div>
      </div>
 
-     <div class="card rounded-0  text-center m-1 p-2 " style="width:27rem;background-color: #1E213A;" >
+     <div class="card rounded-0 d-flex text-center m-1 p-2 " style="width:27rem;background-color: #1E213A;" >
       <div class="card-title wh">Humidity</div>
-      <div style="font-size: 5rem;color:white">{{weather["main"]["humidity"]}}</div>
+      <div style="font-size: 5rem;color:white">{{weatherC["list"][0]["wind"]["speed"]}}</div>
       <div class="wh" style="height:5px;width:20%;background-color:yellow"></div>
     </div>
 
-    <div class="card rounded-0  text-center m-1 p-2 " style="width:27rem;background-color: #1E213A;" >
+    <div class="card rounded-0 d-flex  text-center m-1 p-2 " style="width:27rem;background-color: #1E213A;" >
       <div class="card-title wh">Visiblity </div>
-      <div style="font-size: 5rem;color:white">{{weather["visibility"]}} <span style="font-size:50px;">miles</span></div>
+      <div style="font-size: 5rem;color:white"> {{weatherC["list"][0]["visibility"]}} <span style="font-size:50px;">miles</span></div>
       
     </div>
 
-    <div class="card rounded-0  text-center m-1 p-2 " style="width:27rem;background-color: #1E213A;" >
+    <div class="card rounded-0 d-flex text-center m-1 p-2 " style="width:27rem;background-color: #1E213A;" >
       <div class="card-title wh">Air Pressure</div>
-      <div style="font-size: 5rem;color:white">{{weather["main"]["pressure"]}} <span style="font-size:50px;">mb</span></div>
+      <div style="font-size: 5rem;color:white"> {{weatherC["list"][0]["main"]["pressure"]}}<span style="font-size:50px;">mb</span></div>
      
     </div>
-
+   
   </div>
   <div class="row wh p-2">
     created by Shritesh Aher
